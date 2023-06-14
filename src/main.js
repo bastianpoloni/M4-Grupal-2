@@ -1,8 +1,5 @@
 const empresas = [];
 
-let table = new DataTable('#myTable', {
-    // options
-});
 
 class Empresa {
 
@@ -57,15 +54,35 @@ class Empresa {
     
 }
 
+const tabla = document.getElementById("tablaEmpresa");
+
 function crearEmpresa (){
 
-    let id = document.getElementById("idEmpresa").value;
-    let nombre = document.getElementById("nomEmpresa").value ;
-    let rut  = document.getElementById("rutEmpresa").value ;
+    let id = document.getElementById("idEmpresa");
+    let nombre = document.getElementById("nomEmpresa") ;
+    let rut  = document.getElementById("rutEmpresa");
 
     const empresa = new Empresa(id, nombre,rut);
     empresas.push(empresa);
     console.log(empresas);
+
+    //rowEmpresa
+
+    const newRow = tabla.insertRow();
+    
+
+    const newCell1 = newRow.insertCell();
+    const newCell2 = newRow.insertCell();
+    const newCell3 = newRow.insertCell();
+
+    // establecer el contenido de las celdas
+    newCell1.innerHTML = id.value;
+    newCell2.innerHTML = nombre.value;
+    newCell3.innerHTML = rut.value;
+    // const mostrarId = ;
+    // const mostrarNombre = ;
+    // const mostrarRut =;
+    document.getElementById('formularioEmpresa').reset();
 }
 
 class Importacion {
@@ -99,6 +116,37 @@ class Importacion {
     set precioUnit(precioUnit) {
         this._precioUnit = precioUnit;
     }
+}
+
+
+function crearImportacion (){
+
+    let nombreEmpresa = document.getElementById("nombreEmpresa");
+    let producto = document.getElementById("producto") ;
+    let cantidad  = document.getElementById("cantidad");
+    let precio = document.getElementById("precio")
+
+    const importacion = new Importacion(nombreEmpresa, producto,cantidad,precio);
+    empresas.push(empresa);
+    console.log(empresas);
+
+    //rowEmpresa
+
+    const newRow = tabla.insertRow();
+    
+
+    const newCell1 = newRow.insertCell();
+    const newCell2 = newRow.insertCell();
+    const newCell3 = newRow.insertCell();
+
+    // establecer el contenido de las celdas
+    newCell1.innerHTML = id.value;
+    newCell2.innerHTML = nombre.value;
+    newCell3.innerHTML = rut.value;
+    // const mostrarId = ;
+    // const mostrarNombre = ;
+    // const mostrarRut =;
+    document.getElementById('formularioEmpresa').reset();
 }
 
 // let empresa1 = new Empresa(1, 'Empresa 1', '12345678-9');
