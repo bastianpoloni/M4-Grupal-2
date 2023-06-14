@@ -56,6 +56,8 @@ class Empresa {
 const tabla = document.getElementById("tablaEmpresa");
 const tabla2 = document.getElementById("tablaImportaciones");
 
+const listaEmpresa = document.getElementById("nombreEmpresa");
+
 function crearEmpresa(){
 
     let id = document.getElementById("idEmpresa");
@@ -72,11 +74,26 @@ function crearEmpresa(){
     const newCell2 = newRow.insertCell();
     const newCell3 = newRow.insertCell();
 
+    //lista empresa
+    listaEmpresa.innerHTML = '';
+    //selectEmpresa.innerHTML = '';
+    
+
+    for ( let empresa of empresas) {
+        const option = document.createElement("option");
+        option.value = empresa._idRegistro.value;
+        option.text = empresa._nombre.value;
+        listaEmpresa.add(option);
+
+        console.log(listaEmpresa);
+    }
+
     // establecer el contenido de las celdas
     newCell1.innerHTML = id.value;
     newCell2.innerHTML = nombre.value;
     newCell3.innerHTML = rut.value;
     document.getElementById('formularioEmpresa').reset();
+    
 }
 
 function crearImportacion(){
@@ -105,6 +122,9 @@ function crearImportacion(){
     // console.log(nombreEmpresa, producto,cantidad,precio)
     document.getElementById('formularioImportacion').reset();
 }
+
+
+
 
 class Importacion {
     constructor(idImportacion, producto, numProd, precioUnit) {
