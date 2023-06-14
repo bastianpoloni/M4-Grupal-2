@@ -107,10 +107,18 @@
                                 <div class="modal-body">
                                     <form action="" id="formularioImportacion">
                                         <div class="mb-3">
-                                            <label for="formGroupExampleInput" class="form-label">Empresa</label>
+                                            <!-- <label for="formGroupExampleInput" class="form-label">Empresa</label>
                                             <input type="text" class="form-control" id="nombreEmpresa"
                                                 placeholder="Seleccione Empresa">
+                                             -->
+                                            <select id="nombreEmpresa" class="form-select" aria-label="Default select example">
+                                                <option selected>Selecciona Empresa</option>
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select> 
                                         </div>
+                                        
 
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput2" class="form-label">Producto</label>
@@ -141,7 +149,7 @@
                     </div>
                     <!-- Button trigger modal -->
                     <div class="container p-1 m-1">
-                        <table class="table" id="tablaEmpresa">
+                        <table class="table" id="tablaImportaciones">
                             <thead>
                                 <tr>
                                     <th scope="col">Empresa</th>
@@ -151,7 +159,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <tr id="rowImportaciones">
 
+                                </tr>
                             </tbody>
                         </table>
                     </div>

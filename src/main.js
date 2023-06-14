@@ -51,14 +51,12 @@ class Empresa {
         })
         return `El total de las importaciones es: $${total}`;
     }
-    
-
-    
 }
 
 const tabla = document.getElementById("tablaEmpresa");
+const tabla2 = document.getElementById("tablaImportaciones");
 
-function crearEmpresa (){
+function crearEmpresa(){
 
     let id = document.getElementById("idEmpresa");
     let nombre = document.getElementById("nomEmpresa") ;
@@ -69,10 +67,7 @@ function crearEmpresa (){
     console.log(empresas);
 
     //rowEmpresa
-
     const newRow = tabla.insertRow();
-    
-
     const newCell1 = newRow.insertCell();
     const newCell2 = newRow.insertCell();
     const newCell3 = newRow.insertCell();
@@ -81,39 +76,33 @@ function crearEmpresa (){
     newCell1.innerHTML = id.value;
     newCell2.innerHTML = nombre.value;
     newCell3.innerHTML = rut.value;
-    // const mostrarId = ;
-    // const mostrarNombre = ;
-    // const mostrarRut =;
     document.getElementById('formularioEmpresa').reset();
 }
 
-function crearImportacion (){
+function crearImportacion(){
 
     let nombreEmpresa = document.getElementById("nombreEmpresa");
     let producto = document.getElementById("producto") ;
     let cantidad  = document.getElementById("cantidad");
     let precio = document.getElementById("precio")
 
-    const importacion = new Importacion(nombreEmpresa, producto,cantidad,precio);
-    empresa.addImport(importacion);
-    console.log(empresa.importaciones);
+    // const importacion = new Importacion(nombreEmpresa,producto,cantidad,precio);
+    // const empresa = empresa.addImport(importacion);
+    // empresas[0].addImport(importacion);
 
-    //rowEmpresa
-
-    const newRow = tabla.insertRow();
-    
-
+    //rowImportacion
+    const newRow = tabla2.insertRow();
     const newCell1 = newRow.insertCell();
     const newCell2 = newRow.insertCell();
     const newCell3 = newRow.insertCell();
+    const newCell4 = newRow.insertCell();
 
     // establecer el contenido de las celdas
-    newCell1.innerHTML = id.value;
-    newCell2.innerHTML = nombre.value;
-    newCell3.innerHTML = rut.value;
-    // const mostrarId = ;
-    // const mostrarNombre = ;
-    // const mostrarRut =;
+    newCell1.innerHTML = nombreEmpresa.value;
+    newCell2.innerHTML = producto.value;
+    newCell3.innerHTML = cantidad.value;
+    newCell4.innerHTML = precio.value;
+    // console.log(nombreEmpresa, producto,cantidad,precio)
     document.getElementById('formularioImportacion').reset();
 }
 
