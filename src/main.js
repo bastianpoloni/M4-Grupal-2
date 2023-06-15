@@ -1,5 +1,139 @@
+
+
 const empresas = [];
 
+
+
+const tabla = document.getElementById("tablaEmpresa");
+const tabla2 = document.getElementById("tablaImportaciones");
+
+const listaEmpresa = document.getElementById("nombreEmpresa");
+const listaEmpresa2 = document.getElementById("nombreEmpresa2");
+
+function crearEmpresa(){
+
+    let id = document.getElementById("idEmpresa").value;
+    let nombre = document.getElementById("nomEmpresa").value ;
+    let rut  = document.getElementById("rutEmpresa").value;
+
+    const empresa = new Empresa(id, nombre,rut);
+    empresas.push(empresa);
+    console.log(empresas);
+
+    //rowEmpresa
+    const newRow = tabla.insertRow();
+    const newCell1 = newRow.insertCell();
+    const newCell2 = newRow.insertCell();
+    const newCell3 = newRow.insertCell();
+
+
+
+    //LIsta desplegable con nombre de empresas
+
+    const option = document.createElement("option");
+    option.value = empresa._nombre;
+    option.text = empresa._nombre;
+    listaEmpresa.add(option);
+    
+
+
+    // establecer el contenido de las celdas
+    newCell1.innerHTML = id;
+    newCell2.innerHTML = nombre;
+    newCell3.innerHTML = rut;
+    document.getElementById('formularioEmpresa').reset();
+    
+}
+
+function crearImportacion(){
+
+    let nombreEmpresa = document.getElementById("nombreEmpresa").value;
+    let producto = document.getElementById("producto").value ;
+    let cantidad  = document.getElementById("cantidad").value;
+    let precio = document.getElementById("precio").value;
+    
+    const importacion = new Importacion(nombreEmpresa,producto,cantidad,precio);
+    
+
+    for (empresa of empresas) {
+        if (nombreEmpresa == empresa.nombre) {
+            empresa.addImport(importacion);
+            
+        }
+    }
+
+    console.log(empresas);
+
+    
+
+    // const importacion = new Importacion(nombreEmpresa,producto,cantidad,precio);
+    // const empresa = empresa.addImport(importacion);
+    // empresas[0].addImport(importacion);
+
+    //rowImportacion
+    const newRow = tabla2.insertRow();
+    const newCell1 = newRow.insertCell();
+    const newCell2 = newRow.insertCell();
+    const newCell3 = newRow.insertCell();
+    const newCell4 = newRow.insertCell();
+
+    // establecer el contenido de las celdas
+    newCell1.innerHTML = nombreEmpresa;
+    newCell2.innerHTML = producto;
+    newCell3.innerHTML = cantidad;
+    newCell4.innerHTML = precio;
+    // console.log(nombreEmpresa, producto,cantidad,precio)
+    document.getElementById('formularioImportacion').reset();
+}
+
+function totales (){
+
+        //LIsta desplegable con nombre de empresas
+
+        // const option2 = document.createElement("option");
+        // option.value = empresa._nombre;
+        // option.text = empresa._nombre;
+        // listaEmpresa.add(option);
+    const mostrar = document.getElementById("resultado");
+    
+    for (empresa of empresas){
+        mostrar.innerHTML += `Nombre Empresa:${empresa.nombre} ${empresa.sumaImportaciones()}`;
+
+    }
+    
+}
+class Importacion {
+    constructor(idImportacion, producto, numProd, precioUnit) {
+        this.idImportacion = idImportacion;
+        this.producto = producto;
+        this.numProd = numProd;
+        this.precioUnit = precioUnit;
+    }
+    get idImportacion() {
+        return this._idImportacion;
+    }
+    set idImportacion(idImp) {
+        this._idImportacion = idImp;
+    }
+    get producto() {
+        return this._producto;
+    }
+    set producto(producto) {
+        this._producto = producto;
+    }
+    get numProd() {
+        return this._numProd;
+    }
+    set numProd(numProd) {
+        this._numProd = numProd;
+    }
+    get precioUnit() {
+        return this._precioUnit;
+    }
+    set precioUnit(precioUnit) {
+        this._precioUnit = precioUnit;
+    }
+}
 
 class Empresa {
 
@@ -52,124 +186,3 @@ class Empresa {
         return `El total de las importaciones es: $${total}`;
     }
 }
-
-const tabla = document.getElementById("tablaEmpresa");
-const tabla2 = document.getElementById("tablaImportaciones");
-
-const listaEmpresa = document.getElementById("nombreEmpresa");
-
-function crearEmpresa(){
-
-    let id = document.getElementById("idEmpresa");
-    let nombre = document.getElementById("nomEmpresa") ;
-    let rut  = document.getElementById("rutEmpresa");
-
-    const empresa = new Empresa(id, nombre,rut);
-    empresas.push(empresa);
-    console.log(empresas);
-
-    //rowEmpresa
-    const newRow = tabla.insertRow();
-    const newCell1 = newRow.insertCell();
-    const newCell2 = newRow.insertCell();
-    const newCell3 = newRow.insertCell();
-
-    //lista empresa
-    listaEmpresa.innerHTML = '';
-    //selectEmpresa.innerHTML = '';
-    
-
-    for ( let empresa of empresas) {
-        const option = document.createElement("option");
-        option.value = empresa._idRegistro.value;
-        option.text = empresa._nombre.value;
-        listaEmpresa.add(option);
-
-        console.log(listaEmpresa);
-    }
-
-    // establecer el contenido de las celdas
-    newCell1.innerHTML = id.value;
-    newCell2.innerHTML = nombre.value;
-    newCell3.innerHTML = rut.value;
-    document.getElementById('formularioEmpresa').reset();
-    
-}
-
-function crearImportacion(){
-
-    let nombreEmpresa = document.getElementById("nombreEmpresa");
-    let producto = document.getElementById("producto") ;
-    let cantidad  = document.getElementById("cantidad");
-    let precio = document.getElementById("precio")
-
-    // const importacion = new Importacion(nombreEmpresa,producto,cantidad,precio);
-    // const empresa = empresa.addImport(importacion);
-    // empresas[0].addImport(importacion);
-
-    //rowImportacion
-    const newRow = tabla2.insertRow();
-    const newCell1 = newRow.insertCell();
-    const newCell2 = newRow.insertCell();
-    const newCell3 = newRow.insertCell();
-    const newCell4 = newRow.insertCell();
-
-    // establecer el contenido de las celdas
-    newCell1.innerHTML = nombreEmpresa.value;
-    newCell2.innerHTML = producto.value;
-    newCell3.innerHTML = cantidad.value;
-    newCell4.innerHTML = precio.value;
-    // console.log(nombreEmpresa, producto,cantidad,precio)
-    document.getElementById('formularioImportacion').reset();
-}
-
-
-
-
-class Importacion {
-    constructor(idImportacion, producto, numProd, precioUnit) {
-        this.idImportacion = idImportacion;
-        this.producto = producto;
-        this.numProd = numProd;
-        this.precioUnit = precioUnit;
-    }
-    get idImportacion() {
-        return this._idImportacion;
-    }
-    set idImportacion(idImp) {
-        this._idImportacion = idImp;
-    }
-    get producto() {
-        return this._producto;
-    }
-    set producto(producto) {
-        this._producto = producto;
-    }
-    get numProd() {
-        return this._numProd;
-    }
-    set numProd(numProd) {
-        this._numProd = numProd;
-    }
-    get precioUnit() {
-        return this._precioUnit;
-    }
-    set precioUnit(precioUnit) {
-        this._precioUnit = precioUnit;
-    }
-}
-
-
-
-
-// let empresa1 = new Empresa(1, 'Empresa 1', '12345678-9');
-// console.log(empresa1);
-// const importacion1 = new Importacion(1, 'Producto 1', 1, 100);
-// const importacion2 = new Importacion(2, 'Producto 2', 2, 200);
-// const importacion3 = new Importacion(3, 'Producto 3', 3, 300);
-// empresa1.addImport(importacion1);
-// empresa1.addImport(importacion2);
-// empresa1.addImport(importacion3);
-// console.log(empresa1.sumaImportaciones());
-// console.log(empresa1);
-// console.log(empresa1.calculaTotalImportaciones());
