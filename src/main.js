@@ -170,3 +170,27 @@ class Empresa {
   }
 }
 
+class TipoEmpresa extends Empresa {
+  constructor(idRegistro, nombre, rut, importaciones, rubro, size) {
+    super(idRegistro, nombre, rut, importaciones);
+    this.rubro = rubro;
+    this.size = size;
+  }
+
+  get rubro() {
+    return this._rubro;
+  }
+  set rubro(rubro) {
+    this._rubro = rubro;
+  }
+
+  get size() {
+    return this._size;
+  }
+
+  set size(size) {
+    this._size = size;
+  }
+}
+
+
