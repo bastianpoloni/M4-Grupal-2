@@ -180,9 +180,9 @@
 
         <div class="container">
 
-            <h1>Resumen importaciones</h1>
+            <h2>Resumen importaciones</h2>
             <!-- Button mostrar importaciones -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTotales" onclick="totales ()">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTotales" >
                 Total Importaciones
             </button>
             
@@ -191,27 +191,26 @@
                 <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Importaciones</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="input-group flex-nowrap p-3">
+                        <span class="input-group-text" id="addon-wrapping"></span>
+                        <input id="empresaInput" type="text" class="form-control" placeholder="Nombre Empresa" aria-label="Username" aria-describedby="addon-wrapping">
+                      </div>
                     <div class="modal-body">
                         
 
-                        <form action="" id="formularioTotales">
-                            <div class="mb-3">
-                                <p id="resultado">
-                                
-                                <p>
-                            </div>
-                            
-                            
+                        <form action="" id="formularioTotalImp">                            
+                            <ul id="result">
+                            </ul>                            
                         </form>
 
 
                     </div>
                     <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" onclick="totales()"">Buscar</button>
                     </div>
                 </div>
                 </div>
