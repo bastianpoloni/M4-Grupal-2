@@ -7,9 +7,9 @@ const listaEmpresa = document.getElementById("nombreEmpresa");
 const listaEmpresa2 = document.getElementById("nombreEmpresa2");
 const btnEmpresa = document.getElementById("btnEmpresa");
 const btnImportacion = document.getElementById("btnImportacion");
-const btnBuscar = document.getElementById("btnBuscar");
+const btnTotales = document.getElementById("btnTotales");
 
-btnBuscar.addEventListener("click", totales);
+btnTotales.addEventListener("click", totales);
 btnImportacion.addEventListener("click", crearImportacion);
 btnEmpresa.addEventListener("click", crearEmpresa);
 
