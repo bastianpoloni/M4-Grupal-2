@@ -3,7 +3,7 @@ export class Tipo_Empresa extends Empresa {
     constructor(idRegistro, nombre, rut, importaciones, rubro, empSize) {
       super(idRegistro, nombre, rut, importaciones);
       this.rubro = rubro;
-      this.empSize = size;
+      this.empSize = empSize;
     }
   
     get rubro() {
@@ -14,11 +14,11 @@ export class Tipo_Empresa extends Empresa {
     }
   
     get empSize() {
-      return this._size;
+      return this._empSize;
     }
   
-    set empSize(size) {
-      this._size = size;
+    set empSize(empSize) {
+      this._empSize = empSize;
     }
   }
   
