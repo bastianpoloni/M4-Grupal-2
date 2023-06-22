@@ -5,6 +5,13 @@ const tabla2 = document.getElementById("tablaImportaciones");
 
 const listaEmpresa = document.getElementById("nombreEmpresa");
 const listaEmpresa2 = document.getElementById("nombreEmpresa2");
+const btnEmpresa = document.getElementById("btnEmpresa");
+const btnImportacion = document.getElementById("btnImportacion");
+const btnTotales = document.getElementById("btnTotales");
+
+btnTotales.addEventListener("click", totales);
+btnImportacion.addEventListener("click", crearImportacion);
+btnEmpresa.addEventListener("click", crearEmpresa);
 
 function crearEmpresa() {
   let id = document.getElementById("idEmpresa").value;
@@ -44,7 +51,7 @@ function crearImportacion() {
 
   const importacion = new Importacion(id, producto, cantidad, precio);
 
-  for (empresa of empresas) {
+  for (let empresa of empresas) {
     if (nombreEmpresa == empresa.nombre) {
       empresa.addImport(importacion);
     }
@@ -52,10 +59,7 @@ function crearImportacion() {
 
   console.log(empresas);
 
-  // const importacion = new Importacion(nombreEmpresa,producto,cantidad,precio);
-  // const empresa = empresa.addImport(importacion);
-  // empresas[0].addImport(importacion);
-
+  
   //rowImportacion
   const newRow = tabla2.insertRow();
   const newCell1 = newRow.insertCell();
@@ -170,3 +174,25 @@ class Empresa {
   }
 }
 
+class TipoEmpresa extends Empresa {
+  constructor(idRegistro, nombre, rut, importaciones, rubro, size) {
+    super(idRegistro, nombre, rut, importaciones);
+    this.rubro = rubro;
+    this.size = size;
+  }
+
+  get rubro() {
+    return this._rubro;
+  }
+  set rubro(rubro) {
+    this._rubro = rubro;
+  }
+
+  get size() {
+    return this._size;
+  }
+
+  set size(size) {
+    this._size = size;
+  }
+}
